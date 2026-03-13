@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JASINT PAR Pro — Personnel Action Request Processing System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ═══════════════ CAC LOGIN SCREEN ═══════════════ -->
+    <div id="cac-login" class="cac-overlay">
+        <div class="cac-card">
+            <div class="cac-icon">
+                <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                    <rect x="4" y="12" width="56" height="40" rx="4" stroke="#3b82f6" stroke-width="2.5" fill="none"/>
+                    <rect x="12" y="20" width="16" height="20" rx="2" fill="#1e3a5f"/>
+                    <circle cx="20" cy="27" r="4" fill="#3b82f6" opacity="0.6"/>
+                    <rect x="16" y="33" width="8" height="3" rx="1" fill="#3b82f6" opacity="0.4"/>
+                    <line x1="34" y1="22" x2="52" y2="22" stroke="#2a4a6b" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="34" y1="27" x2="48" y2="27" stroke="#2a4a6b" stroke-width="2" stroke-linecap="round"/>
+                    <line x1="34" y1="32" x2="50" y2="32" stroke="#2a4a6b" stroke-width="2" stroke-linecap="round"/>
+                    <rect x="34" y="36" width="12" height="3" rx="1" fill="#3b82f6" opacity="0.3"/>
+                    <circle cx="52" cy="44" r="6" fill="none" stroke="#c9952c" stroke-width="1.5"/>
+                    <rect x="49" y="42" width="6" height="4" rx="1" fill="#c9952c" opacity="0.5"/>
+                </svg>
+            </div>
+            <h1>JASINT PAR Pro</h1>
+            <p class="cac-subtitle">Personnel Action Request Processing System</p>
+            <div class="cac-divider"></div>
+            <p class="cac-instruction">Insert CAC Card to Authenticate</p>
+            <div class="cac-fields">
+                <div class="cac-field">
+                    <label>EDIPI / DoD ID Number</label>
+                    <input type="text" id="cac-edipi" placeholder="1234567890" maxlength="10">
+                </div>
+                <div class="cac-field">
+                    <label>CAC PIN</label>
+                    <input type="password" id="cac-pin" placeholder="••••••" maxlength="8">
+                </div>
+            </div>
+            <button id="cac-submit" class="cac-btn" onclick="authenticate()">
+                <span class="cac-btn-icon">🔐</span> Authenticate & Enter
+            </button>
+            <div class="cac-footer">
+                <span class="cac-dot"></span>
+                DoD Network — NIPR — Offline Mode Active
+            </div>
+            <p class="cac-warning">⚠ U.S. Government System — Authorized Use Only</p>
+        </div>
+    </div>
+
+    <!-- ═══════════════ MAIN APPLICATION ═══════════════ -->
+    <div id="app" class="app hidden">
+
+        <!-- Top Bar -->
+        <header class="topbar">
+            <div class="topbar-left">
+                <div class="topbar-logo">
+                    <div class="logo-mark">PAR</div>
+                    <div>
+                        <div class="topbar-title">JASINT PAR Pro</div>
+                        <div class="topbar-sub">Personnel Action Processing System</div>
+                    </div>
+                </div>
+            </div>
+            <div class="topbar-center">
+                <div class="ai-status">
+                    <span class="ai-dot"></span>
+                    Local LLM Active — Offline Mode
+                </div>
+            </div>
+            <div class="topbar-right">
+                <div class="user-info">
+                    <span class="user-name" id="user-display">HR Specialist</span>
+                    <span class="user-role">GS-07 / Processing Team</span>
+                </div>
+                <button class="topbar-btn" onclick="showSection('settings')" title="Settings">⚙</button>
+                <button class="topbar-btn logout-btn" onclick="logout()" title="Logout">⏻</button>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <ul class="nav-list">
+                <li class="nav-item active" data-section="dashboard" onclick="showSection('dashboard')">
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-label">Dashboard</span>
+                </li>
+                <li class="nav-item" data-section="new-action" onclick="showSection('new-action')">
+                    <span class="nav-icon">📝</span>
+                    <span class="nav-label">New PA Request</span>
+                </li>
+                <li class="nav-item" data-section="queue" onclick="showSection('queue')">
+                    <span class="nav-icon">📋</span>
+                    <span class="nav-label">Processing Queue</span>
+                    <span class="nav-badge" id="queue-count">12</span>
+                </li>
+                <li class="nav-item" data-section="batch" onclick="showSection('batch')">
+                    <span class="nav-icon">⚡</span>
+                    <span class="nav-label">Batch Processing</span>
+                </li>
+                <li class="nav-item" data-section="noa-lookup" onclick="showSection('noa-lookup')">
+                    <span class="nav-icon">🔍</span>
+                    <span class="nav-label">NOA Code Lookup</span>
+                </li>
+                <li class="nav-item" data-section="wgi-tracker" onclick="showSection('wgi-tracker')">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-label">WGI Tracker</span>
+                </li>
+                <li class="nav-item" data-section="compliance" onclick="showSection('compliance')">
+                    <span class="nav-icon">✅</span>
+                    <span class="nav-label">Compliance Check</span>
+                </li>
+                <li class="nav-item" data-section="ai-assist" onclick="showSection('ai-assist')">
+                    <span class="nav-icon">🤖</span>
+                    <span class="nav-label">AI Assistant</span>
+                    <span class="nav-tag">LLM</span>
+                </li>
+                <li class="nav-item" data-section="reports" onclick="showSection('reports')">
+                    <span class="nav-icon">📈</span>
+                    <span class="nav-label">Reports</span>
+                </li>
+            </ul>
+            <div class="sidebar-footer">
+                <div class="offline-badge">
+                    <span class="offline-dot"></span>
+                    Air-Gapped Secure
+                </div>
+                <div class="version">v1.0.0 — JASINT</div>
+            </div>
+        </nav>
+
+        <!-- ═══════════════ CONTENT AREA ═══════════════ -->
+        <main class="content">
+
+            <!-- ── DASHBOARD ── -->
+            <section id="sec-dashboard" class="section active">
+                <div class="section-header">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p class="section-desc">Personnel Actions Processing Overview</p>
+                    </div>
+                    <div class="header-actions">
+                        <span class="date-display" id="current-date"></span>
+                    </div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon blue">📥</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="stat-pending">12</div>
+                            <div class="stat-label">Pending Actions</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon green">✅</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="stat-completed">47</div>
+                            <div class="stat-label">Completed This Week</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon gold">⏱</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="stat-avg-time">2.3<span class="stat-unit">min</span></div>
+                            <div class="stat-label">Avg Processing Time</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon red">⚠</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="stat-flagged">3</div>
+                            <div class="stat-label">Flagged for Review</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon purple">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="stat-wgi">8</div>
+                            <div class="stat-label">WGI Due (30 days)</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon teal">🤖</div>
+                        <div class="stat-info">
+                            <div class="stat-number" id="stat-auto">34</div>
+                            <div class="stat-label">Auto-Processed (AI)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Actions Table -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Recent Personnel Actions</h2>
+                        <div class="card-actions">
+                            <select class="filter-select" id="dash-filter" onchange="filterDashboard()">
+                                <option value="all">All Actions</option>
+                                <option value="pending">Pending</option>
+                                <option value="processing">Processing</option>
+                                <option value="completed">Completed</option>
+                                <option value="flagged">Flagged</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="data-table" id="recent-actions-table">
+                            <thead>
+                                <tr>
+                                    <th>PA #</th>
+                                    <th>Employee</th>
+                                    <th>Action Type</th>
+                                    <th>NOA Code</th>
+                                    <th>Eff. Date</th>
+                                    <th>Status</th>
+                                    <th>AI Confidence</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recent-actions-body">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Upcoming WGIs Widget -->
+                <div class="card">
+                    <div class="card-header">
+                        <h2>Upcoming Within-Grade Increases</h2>
+                        <button class="btn-sm" onclick="showSection('wgi-tracker')">View All →</button>
+                    </div>
+                    <div class="wgi-timeline" id="wgi-timeline">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── NEW PERSONNEL ACTION ── -->
+            <section id="sec-new-action" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>New Personnel Action Request</h1>
+                        <p class="section-desc">SF-52 — Request for Personnel Action</p>
+                    </div>
+                </div>
+
+                <div class="form-layout">
+                    <div class="form-main">
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Part A — Requesting Office</h2>
+                                <button class="btn-ai" onclick="aiAutoFill()">
+                                    🤖 AI Auto-Fill
+                                </button>
+                            </div>
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>1. Action Requested</label>
+                                    <select id="action-type" onchange="onActionTypeChange()">
+                                        <option value="">— Select Action —</option>
+                                        <option value="appointment">Appointment</option>
+                                        <option value="promotion">Promotion</option>
+                                        <option value="reassignment">Reassignment</option>
+                                        <option value="realignment">Realignment</option>
+                                        <option value="detail">Detail</option>
+                                        <option value="wgi">Within-Grade Increase</option>
+                                        <option value="award">Award</option>
+                                        <option value="separation">Separation</option>
+                                        <option value="retirement">Retirement</option>
+                                        <option value="name-change">Name Change</option>
+                                        <option value="position-change">Position Change</option>
+                                        <option value="pay-adjustment">Pay Adjustment</option>
+                                        <option value="transfer">Transfer</option>
+                                        <option value="conversion">Conversion</option>
+                                        <option value="extension">Extension</option>
+                                        <option value="correction">Correction (Cancellation)</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>2. NOA Code</label>
+                                    <div class="input-with-btn">
+                                        <input type="text" id="noa-code" placeholder="e.g. 702" readonly>
+                                        <button class="btn-inline" onclick="openNoaLookup()" title="Lookup NOA">🔍</button>
+                                    </div>
+                                    <span class="form-hint" id="noa-desc"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label>3. Effective Date</label>
+                                    <input type="date" id="eff-date">
+                                </div>
+                                <div class="form-group">
+                                    <label>4. Employee Name</label>
+                                    <input type="text" id="emp-name" placeholder="Last, First MI">
+                                </div>
+                                <div class="form-group">
+                                    <label>5. SSN (Last 4)</label>
+                                    <input type="text" id="emp-ssn" placeholder="••••" maxlength="4">
+                                </div>
+                                <div class="form-group">
+                                    <label>6. Date of Birth</label>
+                                    <input type="date" id="emp-dob">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Part B — Position Information</h2>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>7. FROM: Position Title</label>
+                                    <input type="text" id="from-title" placeholder="Current Position Title">
+                                </div>
+                                <div class="form-group">
+                                    <label>8. FROM: Pay Plan/Series/Grade</label>
+                                    <input type="text" id="from-ppsg" placeholder="GS-0201-07">
+                                </div>
+                                <div class="form-group">
+                                    <label>9. FROM: Step</label>
+                                    <select id="from-step">
+                                        <option value="">—</option>
+                                        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                                        <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>10. FROM: Salary</label>
+                                    <input type="text" id="from-salary" placeholder="$0.00">
+                                </div>
+                                <div class="form-group">
+                                    <label>11. TO: Position Title</label>
+                                    <input type="text" id="to-title" placeholder="New Position Title">
+                                </div>
+                                <div class="form-group">
+                                    <label>12. TO: Pay Plan/Series/Grade</label>
+                                    <input type="text" id="to-ppsg" placeholder="GS-0201-09">
+                                </div>
+                                <div class="form-group">
+                                    <label>13. TO: Step</label>
+                                    <select id="to-step">
+                                        <option value="">—</option>
+                                        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+                                        <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>14. TO: Salary</label>
+                                    <input type="text" id="to-salary" placeholder="$0.00" readonly>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>15. Organization</label>
+                                    <input type="text" id="org-name" placeholder="WHS / PFPA / OSD / etc.">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>16. Duty Station</label>
+                                    <input type="text" id="duty-station" placeholder="Mark Center, Alexandria, VA">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <h2>Part C — Remarks & Legal Authority</h2>
+                            </div>
+                            <div class="form-grid">
+                                <div class="form-group full-width">
+                                    <label>17. Legal Authority</label>
+                                    <div class="input-with-btn">
+                                        <input type="text" id="legal-auth" placeholder="Auto-populated based on action type" readonly>
+                                        <button class="btn-inline" onclick="suggestLegalAuth()">🤖 Suggest</button>
+                                    </div>
+                                </div>
+                                <div class="form-group full-width">
+                                    <label>18. Remarks</label>
+                                    <textarea id="remarks" rows="4" placeholder="AI will auto-generate remarks based on action type..."></textarea>
+                                    <button class="btn-ai btn-sm" onclick="aiGenerateRemarks()" style="margin-top: 0.5rem">🤖 Generate Remarks</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Panel -->
+                    <div class="form-sidebar">
+                        <div class="card ai-panel">
+                            <h3>🤖 AI Validation</h3>
+                            <div id="ai-validation-results">
+                                <div class="ai-empty">Fill in the form and the AI will validate in real-time</div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Quick Actions</h3>
+                            <div class="quick-actions">
+                                <button class="btn-action" onclick="validateAction()">✅ Validate Action</button>
+                                <button class="btn-action" onclick="calculatePay()">💰 Calculate Pay</button>
+                                <button class="btn-action" onclick="checkCompliance()">📋 Compliance Check</button>
+                                <button class="btn-action" onclick="generateSF50()">📄 Generate SF-50</button>
+                                <button class="btn-action gold" onclick="submitAction()">🚀 Submit Action</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Checklist</h3>
+                            <div class="checklist" id="action-checklist">
+                                <div class="check-item pending" data-check="action-type">
+                                    <span class="check-icon">○</span> Action type selected
+                                </div>
+                                <div class="check-item pending" data-check="noa-code">
+                                    <span class="check-icon">○</span> NOA code assigned
+                                </div>
+                                <div class="check-item pending" data-check="employee-info">
+                                    <span class="check-icon">○</span> Employee info complete
+                                </div>
+                                <div class="check-item pending" data-check="position-from">
+                                    <span class="check-icon">○</span> FROM position entered
+                                </div>
+                                <div class="check-item pending" data-check="position-to">
+                                    <span class="check-icon">○</span> TO position entered
+                                </div>
+                                <div class="check-item pending" data-check="legal-auth">
+                                    <span class="check-icon">○</span> Legal authority set
+                                </div>
+                                <div class="check-item pending" data-check="compliance">
+                                    <span class="check-icon">○</span> Compliance verified
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── PROCESSING QUEUE ── -->
+            <section id="sec-queue" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>Processing Queue</h1>
+                        <p class="section-desc">Actions awaiting processing or approval</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-primary" onclick="showSection('new-action')">+ New Action</button>
+                    </div>
+                </div>
+
+                <div class="queue-filters">
+                    <button class="filter-btn active" data-filter="all" onclick="filterQueue('all', this)">All (12)</button>
+                    <button class="filter-btn" data-filter="pending" onclick="filterQueue('pending', this)">Pending (5)</button>
+                    <button class="filter-btn" data-filter="processing" onclick="filterQueue('processing', this)">In Processing (4)</button>
+                    <button class="filter-btn" data-filter="review" onclick="filterQueue('review', this)">Needs Review (3)</button>
+                </div>
+
+                <div class="card">
+                    <div class="table-wrap">
+                        <table class="data-table" id="queue-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" id="select-all-queue" onchange="toggleAllQueue()"></th>
+                                    <th>PA #</th>
+                                    <th>Employee</th>
+                                    <th>Action</th>
+                                    <th>NOA</th>
+                                    <th>FROM → TO</th>
+                                    <th>Eff. Date</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="queue-body">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="queue-actions-bar" id="bulk-actions" style="display:none;">
+                    <span id="selected-count">0 selected</span>
+                    <button class="btn-sm" onclick="bulkProcess()">⚡ Batch Process Selected</button>
+                    <button class="btn-sm" onclick="bulkApprove()">✅ Approve Selected</button>
+                    <button class="btn-sm danger" onclick="bulkReject()">❌ Return Selected</button>
+                </div>
+            </section>
+
+            <!-- ── BATCH PROCESSING ── -->
+            <section id="sec-batch" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>Batch Processing</h1>
+                        <p class="section-desc">Process multiple personnel actions simultaneously with AI assistance</p>
+                    </div>
+                </div>
+
+                <div class="batch-grid">
+                    <div class="card batch-card" onclick="startBatch('wgi')">
+                        <div class="batch-icon">📅</div>
+                        <h3>WGI Batch</h3>
+                        <p>Auto-process all pending Within-Grade Increases due within 30 days</p>
+                        <span class="batch-count">8 actions ready</span>
+                    </div>
+                    <div class="card batch-card" onclick="startBatch('step-increase')">
+                        <div class="batch-icon">📈</div>
+                        <h3>Step Increases</h3>
+                        <p>Calculate and process step increases with pay table validation</p>
+                        <span class="batch-count">5 actions ready</span>
+                    </div>
+                    <div class="card batch-card" onclick="startBatch('mass-transfer')">
+                        <div class="batch-icon">🔄</div>
+                        <h3>Mass Reassignment</h3>
+                        <p>Process org restructure reassignments in bulk</p>
+                        <span class="batch-count">0 pending</span>
+                    </div>
+                    <div class="card batch-card" onclick="startBatch('awards')">
+                        <div class="batch-icon">🏆</div>
+                        <h3>Awards Processing</h3>
+                        <p>Batch time-off awards, performance awards, and special acts</p>
+                        <span class="batch-count">3 actions ready</span>
+                    </div>
+                    <div class="card batch-card" onclick="startBatch('corrections')">
+                        <div class="batch-icon">🔧</div>
+                        <h3>Corrections</h3>
+                        <p>Process SF-50 corrections and cancellations</p>
+                        <span class="batch-count">2 actions ready</span>
+                    </div>
+                    <div class="card batch-card" onclick="startBatch('extensions')">
+                        <div class="batch-icon">📎</div>
+                        <h3>Detail Extensions</h3>
+                        <p>Extend active details and temporary promotions</p>
+                        <span class="batch-count">1 action ready</span>
+                    </div>
+                </div>
+
+                <!-- Batch Progress -->
+                <div class="card" id="batch-progress" style="display:none;">
+                    <div class="card-header">
+                        <h2>Batch Processing Progress</h2>
+                        <button class="btn-sm danger" onclick="cancelBatch()">Cancel</button>
+                    </div>
+                    <div class="batch-status">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="batch-fill" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text" id="batch-text">Initializing...</div>
+                    </div>
+                    <div class="batch-log" id="batch-log"></div>
+                </div>
+            </section>
+
+            <!-- ── NOA CODE LOOKUP ── -->
+            <section id="sec-noa-lookup" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>NOA Code Lookup</h1>
+                        <p class="section-desc">Nature of Action codes reference — search by code or description</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="search-bar">
+                        <input type="text" id="noa-search" placeholder="Search by NOA code, description, or action type..." oninput="searchNOA()">
+                        <span class="search-icon">🔍</span>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="data-table" id="noa-table">
+                            <thead>
+                                <tr>
+                                    <th>NOA Code</th>
+                                    <th>Description</th>
+                                    <th>Category</th>
+                                    <th>Legal Authority</th>
+                                    <th>Use</th>
+                                </tr>
+                            </thead>
+                            <tbody id="noa-body">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── WGI TRACKER ── -->
+            <section id="sec-wgi-tracker" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>WGI Tracker</h1>
+                        <p class="section-desc">Within-Grade Increase eligibility tracking & auto-processing</p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-primary" onclick="startBatch('wgi')">⚡ Auto-Process All Due</button>
+                    </div>
+                </div>
+
+                <div class="wgi-summary">
+                    <div class="wgi-stat overdue">
+                        <div class="wgi-stat-num">2</div>
+                        <div class="wgi-stat-label">Overdue</div>
+                    </div>
+                    <div class="wgi-stat due-now">
+                        <div class="wgi-stat-num">3</div>
+                        <div class="wgi-stat-label">Due This Pay Period</div>
+                    </div>
+                    <div class="wgi-stat upcoming">
+                        <div class="wgi-stat-num">8</div>
+                        <div class="wgi-stat-label">Due Within 30 Days</div>
+                    </div>
+                    <div class="wgi-stat future">
+                        <div class="wgi-stat-num">24</div>
+                        <div class="wgi-stat-label">Due Within 90 Days</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <h2>WGI Eligibility List</h2>
+                    </div>
+                    <div class="table-wrap">
+                        <table class="data-table" id="wgi-table">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox"></th>
+                                    <th>Employee</th>
+                                    <th>Current Grade/Step</th>
+                                    <th>New Step</th>
+                                    <th>WGI Due Date</th>
+                                    <th>Wait Period</th>
+                                    <th>Eligibility</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wgi-body">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── COMPLIANCE CHECK ── -->
+            <section id="sec-compliance" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>Compliance Engine</h1>
+                        <p class="section-desc">Automated regulatory compliance validation for personnel actions</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="compliance-input">
+                        <h2>Run Compliance Check</h2>
+                        <p>Paste or select a personnel action to validate against OPM regulations, 5 CFR, and DoD policy.</p>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>PA Number or Select from Queue</label>
+                                <select id="compliance-pa">
+                                    <option value="">— Select Action —</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Check Against</label>
+                                <div class="check-options">
+                                    <label class="checkbox-label"><input type="checkbox" checked> 5 CFR</label>
+                                    <label class="checkbox-label"><input type="checkbox" checked> 5 USC</label>
+                                    <label class="checkbox-label"><input type="checkbox" checked> OPM Guide to Processing</label>
+                                    <label class="checkbox-label"><input type="checkbox" checked> DoD Policy</label>
+                                    <label class="checkbox-label"><input type="checkbox" checked> WHS Supplement</label>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn-primary" onclick="runComplianceCheck()">🤖 Run AI Compliance Check</button>
+                    </div>
+                </div>
+
+                <div class="card" id="compliance-results" style="display:none;">
+                    <div class="card-header">
+                        <h2>Compliance Results</h2>
+                        <span class="compliance-score" id="compliance-score"></span>
+                    </div>
+                    <div id="compliance-body"></div>
+                </div>
+            </section>
+
+            <!-- ── AI ASSISTANT ── -->
+            <section id="sec-ai-assist" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>AI Assistant</h1>
+                        <p class="section-desc">Local LLM — Ask anything about personnel action processing</p>
+                    </div>
+                    <div class="header-actions">
+                        <span class="ai-badge">🔒 Runs Locally — No Data Leaves This Machine</span>
+                    </div>
+                </div>
+
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="chat-msg ai">
+                            <div class="chat-avatar">🤖</div>
+                            <div class="chat-bubble">
+                                <strong>PAR Pro AI Assistant</strong><br>
+                                I'm running locally on this machine — no data leaves your workstation. I can help with:
+                                <ul>
+                                    <li>NOA code lookups and guidance</li>
+                                    <li>SF-52 form completion assistance</li>
+                                    <li>Pay calculation (GS pay tables)</li>
+                                    <li>Legal authority references</li>
+                                    <li>Regulation lookups (5 CFR, 5 USC)</li>
+                                    <li>Processing step guidance</li>
+                                    <li>WGI eligibility questions</li>
+                                </ul>
+                                What can I help you with?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <div class="chat-suggestions">
+                            <button class="suggest-btn" onclick="askAI('What NOA code do I use for a career ladder promotion?')">NOA for career ladder promotion?</button>
+                            <button class="suggest-btn" onclick="askAI('How do I calculate a two-grade interval promotion pay?')">Two-grade interval pay calc?</button>
+                            <button class="suggest-btn" onclick="askAI('What is the waiting period for a WGI from Step 4 to Step 5?')">WGI waiting period Step 4→5?</button>
+                            <button class="suggest-btn" onclick="askAI('What legal authority applies to a reassignment?')">Legal auth for reassignment?</button>
+                        </div>
+                        <div class="chat-input-row">
+                            <input type="text" id="chat-input" placeholder="Ask about personnel actions, regulations, pay calculations..." onkeydown="if(event.key==='Enter')sendChat()">
+                            <button class="chat-send" onclick="sendChat()">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── REPORTS ── -->
+            <section id="sec-reports" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>Reports & Analytics</h1>
+                        <p class="section-desc">Processing metrics and action summaries</p>
+                    </div>
+                </div>
+
+                <div class="reports-grid">
+                    <div class="card report-card">
+                        <h3>📊 Weekly Processing Summary</h3>
+                        <div class="report-chart" id="chart-weekly">
+                            <div class="bar-chart">
+                                <div class="bar-group">
+                                    <div class="bar" style="height: 60%"><span>Mon</span></div>
+                                    <div class="bar" style="height: 85%"><span>Tue</span></div>
+                                    <div class="bar" style="height: 45%"><span>Wed</span></div>
+                                    <div class="bar active" style="height: 70%"><span>Thu</span></div>
+                                    <div class="bar" style="height: 30%"><span>Fri</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="report-meta">
+                            <span>47 actions processed</span>
+                            <span>↑ 12% from last week</span>
+                        </div>
+                    </div>
+                    <div class="card report-card">
+                        <h3>📋 Action Type Breakdown</h3>
+                        <div class="report-list">
+                            <div class="report-row">
+                                <span>WGI / Step Increases</span>
+                                <div class="mini-bar"><div class="mini-fill" style="width: 35%"></div></div>
+                                <span>35%</span>
+                            </div>
+                            <div class="report-row">
+                                <span>Promotions</span>
+                                <div class="mini-bar"><div class="mini-fill gold" style="width: 20%"></div></div>
+                                <span>20%</span>
+                            </div>
+                            <div class="report-row">
+                                <span>Reassignments</span>
+                                <div class="mini-bar"><div class="mini-fill" style="width: 15%"></div></div>
+                                <span>15%</span>
+                            </div>
+                            <div class="report-row">
+                                <span>Awards</span>
+                                <div class="mini-bar"><div class="mini-fill green" style="width: 18%"></div></div>
+                                <span>18%</span>
+                            </div>
+                            <div class="report-row">
+                                <span>Other</span>
+                                <div class="mini-bar"><div class="mini-fill gray" style="width: 12%"></div></div>
+                                <span>12%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card report-card">
+                        <h3>⏱ Processing Time Trend</h3>
+                        <div class="report-highlight">
+                            <div class="highlight-number">2.3 min</div>
+                            <div class="highlight-label">Average with AI assist</div>
+                            <div class="highlight-compare">vs. <strong>18 min</strong> manual average (DCPDS)</div>
+                        </div>
+                        <div class="time-savings">
+                            <div class="savings-badge">⚡ 87% faster than DCPDS</div>
+                        </div>
+                    </div>
+                    <div class="card report-card">
+                        <h3>✅ Compliance Rate</h3>
+                        <div class="report-highlight">
+                            <div class="highlight-number green">99.2%</div>
+                            <div class="highlight-label">First-pass compliance rate</div>
+                            <div class="highlight-compare">AI catches errors before submission</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── SETTINGS ── -->
+            <section id="sec-settings" class="section">
+                <div class="section-header">
+                    <div>
+                        <h1>Settings</h1>
+                        <p class="section-desc">Application configuration</p>
+                    </div>
+                </div>
+                <div class="settings-grid">
+                    <div class="card">
+                        <h3>Local LLM Configuration</h3>
+                        <div class="form-group">
+                            <label>Model</label>
+                            <select>
+                                <option selected>Phi-3-mini (3.8B) — Recommended</option>
+                                <option>TinyLlama (1.1B) — Faster</option>
+                                <option>Mistral-7B-Q4 — Most Accurate</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Inference Mode</label>
+                            <select>
+                                <option selected>WebGPU (Hardware Accelerated)</option>
+                                <option>WASM (CPU Fallback)</option>
+                            </select>
+                        </div>
+                        <div class="setting-info">
+                            <span class="offline-dot"></span> All processing runs locally. No network requests are made.
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Pay Tables</h3>
+                        <div class="setting-info">
+                            <p>GS Pay Tables: <strong>2026 — Washington-Baltimore-Arlington Locality</strong></p>
+                            <p>Last Updated: January 2026</p>
+                            <button class="btn-sm" style="margin-top: 0.5rem">Import Updated Tables</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Organization Defaults</h3>
+                        <div class="form-group">
+                            <label>Agency</label>
+                            <input type="text" value="Department of Defense — WHS">
+                        </div>
+                        <div class="form-group">
+                            <label>Default Duty Station</label>
+                            <input type="text" value="Mark Center, Alexandria, VA 22350">
+                        </div>
+                        <div class="form-group">
+                            <label>Servicing HR Office</label>
+                            <input type="text" value="WHS Human Resources Directorate">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

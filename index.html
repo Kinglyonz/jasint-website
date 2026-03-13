@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JASINT Consulting &amp; Technologies | Cybersecurity &amp; IT Solutions</title>
+    <meta name="description" content="JASINT Consulting and Technologies, LLC — Premier cybersecurity engineering, systems engineering, and operations management for Federal, State, and Commercial sectors.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="https://jasint.com/wp-content/uploads/2023/11/cropped-JASINT-logo-32x32.png">
+</head>
+<body>
+
+    <!-- ===================== NAVIGATION ===================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <img src="https://jasint.com/wp-content/uploads/2023/11/JASINT-logo.png" alt="JASINT Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="logo-fallback" style="display:none;">
+                    <span class="logo-text">JASINT</span>
+                    <span class="logo-sub">CONSULTING &amp; TECHNOLOGIES</span>
+                </div>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#leadership" class="nav-link">Leadership</a>
+                <a href="#sectors" class="nav-link">Sectors</a>
+                <a href="#locations" class="nav-link">Locations</a>
+                <a href="#automation" class="nav-link">Automation</a>
+                <a href="#careers" class="nav-link">Careers</a>
+                <a href="#contact" class="nav-link nav-cta">Contact Us</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="hero">
+        <canvas id="cyberCanvas"></canvas>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Trusted by the DoD, WHS &amp; Intelligence Community
+            </div>
+            <h1 class="hero-title">
+                Mission-Critical Solutions.<br>
+                <span class="gradient-text">Delivered With Precision.</span>
+            </h1>
+            <p class="hero-subtitle">
+                JASINT delivers cybersecurity engineering, systems architecture, and operations management solutions for federal agencies, defense organizations, and commercial enterprises.
+            </p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">
+                    <span>Request a Consultation</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    <span>Explore Our Services</span>
+                </a>
+            </div>
+            <div class="hero-certifications">
+                <span class="cert-label">Certifications &amp; Vehicles:</span>
+                <div class="cert-badges">
+                    <span class="cert-badge">GSA MAS</span>
+                    <span class="cert-badge">SBA 8(a)</span>
+                    <span class="cert-badge">WHS Contract</span>
+                    <span class="cert-badge">ISO 27001</span>
+                    <span class="cert-badge">CMMI Level 3</span>
+                    <span class="cert-badge">Secret/TS Cleared</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <a href="#about" aria-label="Scroll down">
+                <div class="scroll-indicator">
+                    <div class="scroll-dot"></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ===================== STATS BAR ===================== -->
+    <section class="stats-bar">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item" data-target="15" data-suffix="+">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Years of Excellence</div>
+                </div>
+                <div class="stat-item" data-target="6">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Office Locations</div>
+                </div>
+                <div class="stat-item" data-target="200" data-suffix="+">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Contracts Delivered</div>
+                </div>
+                <div class="stat-item" data-target="50" data-suffix="+">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Cleared Professionals</div>
+                </div>
+                <div class="stat-item" data-target="4">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Market Sectors Served</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== ABOUT ===================== -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About JASINT</span>
+                <h2 class="section-title">Mission-Driven.<br><span class="gradient-text">Results-Focused.</span></h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content">
+                    <p class="about-lead">
+                        JASINT Consulting and Technologies, LLC is a premier Small Business providing Cybersecurity Engineering Services, high-end Information Technology Services, Intelligence Analysis Services, and professional services across Government, Commercial, and Municipal sectors.
+                    </p>
+                    <div class="about-mission-vision">
+                        <div class="mv-card">
+                            <div class="mv-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 000 20 14.5 14.5 0 000-20M2 12h20"/></svg>
+                            </div>
+                            <h3>Our Mission</h3>
+                            <p>To create value and provide premier technology and professional services. Our strength is internal talent, relationships built on trust, sustainable processes, and integration of state-of-the-art technology.</p>
+                        </div>
+                        <div class="mv-card">
+                            <div class="mv-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                            </div>
+                            <h3>Our Vision</h3>
+                            <p>To be a premier provider of world-class technology and professional services, supporting our clients' missions and goals while ensuring the security and freedom of our country.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-values">
+                    <h3 class="values-title">Core Values</h3>
+                    <div class="values-list">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <h4>Integrity</h4>
+                                <p>We do the right thing in every action and every decision.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                            </div>
+                            <div>
+                                <h4>Relationships</h4>
+                                <p>We listen to learn, build trust, and honor commitments.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div>
+                                <h4>Innovation</h4>
+                                <p>We continuously find new solutions to stay ahead and achieve outcomes rapidly.</p>
+                            </div>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                            <div>
+                                <h4>Service Excellence</h4>
+                                <p>We anticipate needs and demonstrate unwavering commitment to quality.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SERVICES ===================== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">What We Do</span>
+                <h2 class="section-title">Capabilities That<br><span class="gradient-text">Drive Mission Success</span></h2>
+                <p class="section-desc">From securing federal networks to optimizing enterprise operations, JASINT delivers end-to-end technology solutions tailored to your mission.</p>
+            </div>
+            <div class="services-grid">
+                <!-- Systems Engineering -->
+                <div class="service-card" data-service="systems">
+                    <div class="service-icon-wrap">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                        </svg>
+                    </div>
+                    <div class="service-number">01</div>
+                    <h3>Systems Engineering</h3>
+                    <p>Architecture, integration, and sustainment of complex IT environments — from ground up or optimization of existing infrastructure.</p>
+                    <ul class="service-list">
+                        <li>Systems Architecture &amp; Administration</li>
+                        <li>5G Wireless Security Engineering (IoT)</li>
+                        <li>Software Defined Networks (SDN)</li>
+                        <li>VDI / Cloud Implementation &amp; Sustainment</li>
+                        <li>Network Engineering</li>
+                        <li>Software Engineering / DevOps</li>
+                        <li>Test Integration</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Discuss Your Needs
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Cybersecurity -->
+                <div class="service-card featured" data-service="cyber">
+                    <div class="service-badge">Core Competency</div>
+                    <div class="service-icon-wrap">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="service-number">02</div>
+                    <h3>Cybersecurity Engineering</h3>
+                    <p>Enterprise-grade cyber defense leveraging NIST frameworks, cross-domain solutions, and advanced threat analytics to protect critical assets.</p>
+                    <ul class="service-list">
+                        <li>Risk &amp; Vulnerability Assessments</li>
+                        <li>Penetration Testing &amp; Cyber Hunt</li>
+                        <li>Cross-Domain Solutions (RTB Compliant)</li>
+                        <li>Secure Systems Architecture</li>
+                        <li>RMF Expertise — NIST 800-53</li>
+                        <li>AI-Enhanced Threat Analytics</li>
+                        <li>Insider Threat Programs</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Discuss Your Needs
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+
+                <!-- Operations Management -->
+                <div class="service-card" data-service="operations">
+                    <div class="service-icon-wrap">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/><path d="M9 14l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <div class="service-number">03</div>
+                    <h3>Operations Management</h3>
+                    <p>Agile program management, acquisition support, and strategic planning that optimizes portfolio performance and operational efficiency.</p>
+                    <ul class="service-list">
+                        <li>Program / Project Management (PMO)</li>
+                        <li>Cradle-to-Grave Acquisition Support</li>
+                        <li>Strategic Planning &amp; Analysis</li>
+                        <li>Financial Planning &amp; IGCE Development</li>
+                        <li>Portfolio Management &amp; Risk Mitigation</li>
+                        <li>Training Material Development</li>
+                        <li>Process Development &amp; Revision (PDMR)</li>
+                    </ul>
+                    <a href="#contact" class="service-link">
+                        Discuss Your Needs
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== WHY JASINT ===================== -->
+    <section class="why-jasint">
+        <div class="container">
+            <div class="why-grid">
+                <div class="why-content">
+                    <span class="section-tag">Why JASINT</span>
+                    <h2 class="section-title">Solutions That Conquer Your<br><span class="gradient-text">Most Critical Challenges</span></h2>
+                    <p>With proven performance across the DoD, Washington Headquarters Services (WHS), Intelligence Community, Greater Orlando Airport Authority, State of Maryland, and the commercial sector, JASINT has built a reputation for delivering consistent client satisfaction.</p>
+                    <div class="why-features">
+                        <div class="why-feature">
+                            <div class="why-check">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Agile &amp; Modular Expertise</h4>
+                                <p>Rapid deployment of qualified professionals and customized solutions to meet emerging requirements.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-check">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Cleared &amp; Certified Workforce</h4>
+                                <p>Our team holds active security clearances and industry-leading certifications to handle sensitive missions.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-check">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Proven Past Performance</h4>
+                                <p>Track record of success across DoD, IC, municipal, and commercial engagements with measurable outcomes.</p>
+                            </div>
+                        </div>
+                        <div class="why-feature">
+                            <div class="why-check">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            </div>
+                            <div>
+                                <h4>Small Business Agility</h4>
+                                <p>The personalized attention and responsiveness of a small business with the capabilities of a large enterprise.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-visual">
+                    <div class="why-image-wrapper">
+                        <img src="https://jasint.com/wp-content/uploads/2025/06/attractive_young_data_center_tech.png" alt="JASINT engineer in data center" class="why-image">
+                        <div class="why-image-overlay"></div>
+                        <div class="why-float-card">
+                            <div class="float-icon">
+                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
+                            <div>
+                                <strong>Raise The Bar Compliant</strong>
+                                <span>One of few companies with RTB cross-domain capability</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== LEADERSHIP ===================== -->
+    <section class="leadership" id="leadership">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Team</span>
+                <h2 class="section-title">Proven <span class="gradient-text">Leadership</span></h2>
+            </div>
+            <div class="leader-card">
+                <div class="leader-image">
+                    <div class="leader-placeholder">
+                        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    </div>
+                </div>
+                <div class="leader-info">
+                    <h3>Rodney Williams</h3>
+                    <span class="leader-title">Chief Executive Officer</span>
+                    <p>A seasoned technology executive with deep expertise in cybersecurity, systems engineering, and government IT. Rodney has led JASINT to become a trusted partner for the DoD, Washington Headquarters Services, Intelligence Community, and commercial clients. Recently appointed as a member of the <strong>Equitech Growth Commission</strong> established by TEDCO in Maryland, he is actively shaping Maryland's technology-driven economic future.</p>
+                    <div class="leader-credentials">
+                        <span class="credential">Equitech Growth Commission Member</span>
+                        <span class="credential">TEDCO Maryland</span>
+                        <span class="credential">DoD &amp; IC Experience</span>
+                    </div>
+                    <a href="https://www.linkedin.com/in/rodney-williams-247a5a3/" target="_blank" rel="noopener" class="leader-linkedin">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        Connect on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== SECTORS ===================== -->
+    <section class="sectors" id="sectors">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Markets We Serve</span>
+                <h2 class="section-title">Cross-Sector <span class="gradient-text">Expertise</span></h2>
+                <p class="section-desc">JASINT brings proven capabilities to every sector, from classified federal missions to commercial digital transformation.</p>
+            </div>
+            <div class="sectors-grid">
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+                    </div>
+                    <h3>Department of Defense</h3>
+                    <p>Cybersecurity, systems engineering, and cross-domain solutions supporting critical defense infrastructure, including WHS operations and services.</p>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3>Intelligence Community</h3>
+                    <p>Advanced information sharing, cross-domain solutions, and enterprise-level cybersecurity for intelligence stakeholders.</p>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+                    </div>
+                    <h3>Commercial Sector</h3>
+                    <p>Private industry cybersecurity assessments, IT modernization, and operations management for enterprise outcomes.</p>
+                </div>
+                <div class="sector-card">
+                    <div class="sector-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M2 12h20M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10A15.3 15.3 0 0112 2z"/></svg>
+                    </div>
+                    <h3>State &amp; Municipal</h3>
+                    <p>Technology modernization, airport operations management, and infrastructure solutions for state and local government.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTRACT VEHICLES & NAICS ===================== -->
+    <section class="contracts">
+        <div class="container">
+            <div class="contracts-grid">
+                <div class="contracts-left">
+                    <span class="section-tag">Contract Vehicles &amp; Certifications</span>
+                    <h2 class="section-title">Ready to <span class="gradient-text">Engage</span></h2>
+                    <p>JASINT maintains active contract vehicles and certifications that enable rapid procurement and seamless teaming arrangements for government and commercial clients.</p>
+                    <div class="contract-items">
+                        <div class="contract-item">
+                            <div class="contract-icon">WHS</div>
+                            <div>
+                                <strong>Washington Headquarters Services</strong>
+                                <span>DoD Pentagon &amp; National Capital Region</span>
+                            </div>
+                        </div>
+                        <div class="contract-item">
+                            <div class="contract-icon">GSA</div>
+                            <div>
+                                <strong>GSA Multiple Award Schedule</strong>
+                                <span>IT Professional Services, Cybersecurity</span>
+                            </div>
+                        </div>
+                        <div class="contract-item">
+                            <div class="contract-icon">SBA</div>
+                            <div>
+                                <strong>SBA 8(a) Certified</strong>
+                                <span>Small Disadvantaged Business</span>
+                            </div>
+                        </div>
+                        <div class="contract-item">
+                            <div class="contract-icon">SB</div>
+                            <div>
+                                <strong>Small Business</strong>
+                                <span>DUNS, SAM.gov Registered</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-primary" style="margin-top: 2rem;">
+                        <span>Request Capabilities Statement</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+                    </a>
+                </div>
+                <div class="contracts-right">
+                    <h3>NAICS Codes</h3>
+                    <div class="naics-grid">
+                        <div class="naics-item"><span class="naics-code">541511</span><span class="naics-desc">Custom Computer Programming</span></div>
+                        <div class="naics-item"><span class="naics-code">541512</span><span class="naics-desc">Computer Systems Design</span></div>
+                        <div class="naics-item"><span class="naics-code">541513</span><span class="naics-desc">Computer Facilities Mgmt</span></div>
+                        <div class="naics-item"><span class="naics-code">541519</span><span class="naics-desc">Other Computer Services</span></div>
+                        <div class="naics-item"><span class="naics-code">541611</span><span class="naics-desc">Admin Management Consulting</span></div>
+                        <div class="naics-item"><span class="naics-code">541612</span><span class="naics-desc">HR Consulting Services</span></div>
+                        <div class="naics-item"><span class="naics-code">541715</span><span class="naics-desc">R&amp;D Physical/Life Sciences</span></div>
+                        <div class="naics-item"><span class="naics-code">518210</span><span class="naics-desc">Data Processing &amp; Hosting</span></div>
+                        <div class="naics-item"><span class="naics-code">541330</span><span class="naics-desc">Engineering Services</span></div>
+                        <div class="naics-item"><span class="naics-code">561210</span><span class="naics-desc">Facilities Support Services</span></div>
+                        <div class="naics-item"><span class="naics-code">541618</span><span class="naics-desc">Other Management Consulting</span></div>
+                        <div class="naics-item"><span class="naics-code">541690</span><span class="naics-desc">Other Scientific Consulting</span></div>
+                    </div>
+                    <p class="naics-more">+ 15 additional NAICS codes available</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== PARTNERS ===================== -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Technology Partnerships</span>
+                <h2 class="section-title">Partners &amp; <span class="gradient-text">Technologies</span></h2>
+            </div>
+            <div class="partners-logos">
+                <img src="https://jasint.com/wp-content/uploads/2025/05/logos-3.png" alt="JASINT Technology Partners" class="partner-logo-img">
+                <img src="https://jasint.com/wp-content/uploads/2025/05/logos-4.png" alt="JASINT Technology Partners" class="partner-logo-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== LOCATIONS ===================== -->
+    <section class="locations" id="locations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Presence</span>
+                <h2 class="section-title">Nationwide <span class="gradient-text">Reach</span></h2>
+                <p class="section-desc">Strategically positioned across the United States to serve our clients wherever the mission demands.</p>
+            </div>
+            <div class="locations-grid">
+                <div class="location-card hq">
+                    <div class="location-badge">Corporate HQ</div>
+                    <div class="location-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Columbia, MD</h3>
+                    <p>9730 Patuxent Woods Dr.<br>Suite 500, Columbia, MD 21046</p>
+                    <a href="https://goo.gl/maps/BZiQcs5r3PM6YDzn8" target="_blank" rel="noopener" class="location-link">View on Map →</a>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Orlando, FL</h3>
+                    <p>Central Florida operations supporting municipal and commercial clients.</p>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Atlanta, GA</h3>
+                    <p>Southeast hub supporting federal and commercial engagements.</p>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Huntsville, AL</h3>
+                    <p>Defense and intelligence community support in the Rocket City corridor.</p>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Tampa, FL</h3>
+                    <p>CENTCOM/SOCOM corridor supporting critical defense missions.</p>
+                </div>
+                <div class="location-card">
+                    <div class="location-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                    </div>
+                    <h3>Ogden, UT</h3>
+                    <p>Western operations supporting intelligence and defense technology programs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CAREERS ===================== -->
+    <section class="careers" id="careers">
+        <div class="container">
+            <div class="careers-content">
+                <span class="section-tag">Join the Team</span>
+                <h2 class="section-title">Build Your Career<br>at <span class="gradient-text">JASINT</span></h2>
+                <p>We're always looking for talented cybersecurity engineers, systems architects, project managers, and technology professionals who want to make an impact on critical national security missions.</p>
+                <div class="careers-perks">
+                    <div class="perk">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Competitive Compensation</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Security Clearance Support</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Professional Development</span>
+                    </div>
+                    <div class="perk">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                        <span>Mission-Driven Culture</span>
+                    </div>
+                </div>
+                <a href="mailto:recruiting@jasint.com" class="btn btn-primary">
+                    <span>View Open Positions</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== AUTOMATION / DIGITAL TRANSFORMATION ===================== -->
+    <section class="automation" id="automation">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Digital Transformation</span>
+                <h2 class="section-title">Operational <span class="gradient-text">Automation</span></h2>
+                <p class="section-desc">Streamline workflows, eliminate manual bottlenecks, and scale operations with intelligent automation solutions tailored to your business processes.</p>
+            </div>
+            <div class="automation-grid">
+                <div class="auto-card">
+                    <div class="auto-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <h3>Email &amp; Communications Automation</h3>
+                    <p>Automated client follow-ups, proposal distribution, recruitment outreach, and intelligent email workflows that save hours per week.</p>
+                    <ul class="auto-benefits">
+                        <li>Auto-triggered client communications</li>
+                        <li>Proposal tracking &amp; follow-up sequences</li>
+                        <li>Recruiting pipeline automation</li>
+                    </ul>
+                </div>
+                <div class="auto-card">
+                    <div class="auto-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M7 8h3M7 11h5"/></svg>
+                    </div>
+                    <h3>Reporting &amp; Analytics Dashboards</h3>
+                    <p>Real-time dashboards for contract status, employee utilization, financial tracking, and KPI monitoring — eliminating manual spreadsheet work.</p>
+                    <ul class="auto-benefits">
+                        <li>Live contract &amp; project dashboards</li>
+                        <li>Automated financial reporting</li>
+                        <li>Employee utilization tracking</li>
+                    </ul>
+                </div>
+                <div class="auto-card">
+                    <div class="auto-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+                    </div>
+                    <h3>Workflow &amp; Process Automation</h3>
+                    <p>Transform manual HR onboarding, procurement processes, timesheet management, and document workflows into streamlined automated systems.</p>
+                    <ul class="auto-benefits">
+                        <li>Employee onboarding automation</li>
+                        <li>Procurement &amp; document workflows</li>
+                        <li>Timesheet &amp; billing automation</li>
+                    </ul>
+                </div>
+                <div class="auto-card">
+                    <div class="auto-icon">
+                        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+                    </div>
+                    <h3>CRM &amp; Business Development</h3>
+                    <p>Automated lead tracking, opportunity pipeline management, contract renewal alerts, and client relationship workflows.</p>
+                    <ul class="auto-benefits">
+                        <li>Automated lead capture &amp; scoring</li>
+                        <li>Contract renewal reminders</li>
+                        <li>BD pipeline intelligence</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="automation-cta">
+                <p>Ready to save <strong>20+ hours per week</strong> and eliminate manual bottlenecks?</p>
+                <a href="#contact" class="btn btn-primary">
+                    <span>Schedule an Automation Assessment</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== CONTACT ===================== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Get In Touch</span>
+                    <h2 class="section-title">Let's Discuss<br>Your <span class="gradient-text">Mission</span></h2>
+                    <p>Whether you need cybersecurity expertise, systems engineering support, or operations management — our team is ready to help you achieve your objectives.</p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </div>
+                            <div>
+                                <strong>Corporate Headquarters</strong>
+                                <span>9730 Patuxent Woods Dr, Suite 500<br>Columbia, MD 21046</span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                            </div>
+                            <div>
+                                <strong>Phone</strong>
+                                <span><a href="tel:4109695573">(410) 969-5573</a></span>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            </div>
+                            <div>
+                                <strong>Email</strong>
+                                <span>
+                                    <a href="mailto:info@jasint.com">info@jasint.com</a> — General<br>
+                                    <a href="mailto:busdev@jasint.com">busdev@jasint.com</a> — Business Development<br>
+                                    <a href="mailto:recruiting@jasint.com">recruiting@jasint.com</a> — Careers
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-socials">
+                        <a href="https://www.facebook.com/JasintConsultingandTechnologies" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://www.instagram.com/jasintconsultingandtechnology/" target="_blank" rel="noopener" aria-label="Instagram">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg>
+                        </a>
+                        <a href="https://www.linkedin.com/company/jasint-consulting-and-technologies/posts/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-wrap">
+                    <form class="contact-form" id="contactForm">
+                        <h3>Send Us a Message</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name *</label>
+                                <input type="text" id="firstName" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name *</label>
+                                <input type="text" id="lastName" name="lastName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization</label>
+                            <input type="text" id="organization" name="organization">
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Area of Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select a service area...</option>
+                                <option value="cybersecurity">Cybersecurity Engineering</option>
+                                <option value="systems">Systems Engineering</option>
+                                <option value="operations">Operations Management</option>
+                                <option value="careers">Career Opportunities</option>
+                                <option value="teaming">Teaming / Partnerships</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full">
+                            <span>Send Message</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://jasint.com/wp-content/uploads/2023/11/JASINT-logo.png" alt="JASINT Logo" class="footer-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div class="footer-logo-fallback" style="display:none;">
+                        <span class="logo-text">JASINT</span>
+                    </div>
+                    <p>Premier cybersecurity engineering, IT services, and professional services for federal, state, and commercial sectors.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <a href="#services">Systems Engineering</a>
+                    <a href="#services">Cybersecurity Engineering</a>
+                    <a href="#services">Operations Management</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <a href="#about">About Us</a>
+                    <a href="#leadership">Leadership</a>
+                    <a href="#sectors">Sectors</a>
+                    <a href="#careers">Careers</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <a href="tel:4109695573">(410) 969-5573</a>
+                    <a href="mailto:info@jasint.com">info@jasint.com</a>
+                    <a href="https://goo.gl/maps/BZiQcs5r3PM6YDzn8" target="_blank" rel="noopener">Columbia, MD HQ</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 JASINT Consulting &amp; Technologies, LLC. All rights reserved.</p>
+                <div class="footer-socials">
+                    <a href="https://www.facebook.com/JasintConsultingandTechnologies" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://www.instagram.com/jasintconsultingandtechnology/" target="_blank" rel="noopener" aria-label="Instagram">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678a6.162 6.162 0 100 12.324 6.162 6.162 0 100-12.324zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405a1.441 1.441 0 11-2.88 0 1.441 1.441 0 012.88 0z"/></svg>
+                    </a>
+                    <a href="https://www.linkedin.com/company/jasint-consulting-and-technologies/posts/" target="_blank" rel="noopener" aria-label="LinkedIn">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
