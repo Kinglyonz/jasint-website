@@ -82,27 +82,6 @@
             word-break: break-all;
         }
 
-        .info-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 24px;
-        }
-        .info-item { text-align: center; }
-        .info-label {
-            font-size: 9px;
-            letter-spacing: 1.5px;
-            color: rgba(255, 255, 255, 0.3);
-            text-transform: uppercase;
-            margin-bottom: 4px;
-        }
-        .info-value {
-            font-size: 18px;
-            font-weight: 700;
-            color: #00c8ff;
-        }
-        .info-value.small { font-size: 14px; }
-
         .divider {
             height: 1px;
             background: rgba(255, 255, 255, 0.08);
@@ -111,9 +90,8 @@
 
         .powered-by {
             text-align: center;
-            margin-top: 20px;
         }
-        .powered-by span {
+        .powered-by .brand {
             font-size: 10px;
             letter-spacing: 1.5px;
             color: rgba(255, 255, 255, 0.25);
@@ -124,34 +102,156 @@
             text-decoration: none;
             font-weight: 600;
         }
+        .powered-by .email {
+            margin-top: 8px;
+        }
+        .powered-by .email a {
+            font-size: 12px;
+            color: #00c8ff;
+            letter-spacing: 0.5px;
+        }
 
-        .cta-btn {
-            display: block;
+        /* Buttons */
+        .buttons {
             max-width: 400px;
             width: 100%;
-            padding: 16px;
-            background: linear-gradient(135deg, #00c8ff, #0066ff);
-            color: #fff;
-            border: none;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
             border-radius: 12px;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 700;
             text-align: center;
             text-decoration: none;
             letter-spacing: 0.5px;
-            margin-top: 20px;
             cursor: pointer;
+            border: none;
+            font-family: inherit;
         }
-        .tap-hint {
+        .btn-primary {
+            background: linear-gradient(135deg, #00c8ff, #0066ff);
+            color: #fff;
+        }
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #00c8ff;
+        }
+
+        /* Pricing Panel (hidden by default) */
+        .pricing-panel {
+            max-width: 400px;
+            width: 100%;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin 0.4s ease;
+            margin-top: 0;
+        }
+        .pricing-panel.open {
+            max-height: 600px;
+            margin-top: 16px;
+        }
+        .pricing-inner {
+            background: linear-gradient(135deg, #0a1628, #0d2137);
+            border: 1px solid rgba(0, 200, 255, 0.12);
+            border-radius: 16px;
+            padding: 28px 24px;
+        }
+        .pricing-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
             text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .price-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+        .price-box {
+            flex: 1;
+            text-align: center;
+            background: rgba(0, 200, 255, 0.04);
+            border: 1px solid rgba(0, 200, 255, 0.12);
+            border-radius: 12px;
+            padding: 16px 12px;
+        }
+        .price-box .amount {
+            font-size: 26px;
+            font-weight: 800;
+            color: #00c8ff;
+        }
+        .price-box .label {
+            font-size: 10px;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .scope-section {
+            margin-bottom: 16px;
+        }
+        .scope-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #00c8ff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .scope-list {
+            list-style: none;
+            padding: 0;
+        }
+        .scope-list li {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.6;
+            padding: 4px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+        .scope-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #00c8ff;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .scope-note {
             font-size: 12px;
             color: rgba(255, 255, 255, 0.3);
-            margin-top: 10px;
+            line-height: 1.6;
+            text-align: center;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .tap-hint {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.2);
+            margin-top: 12px;
         }
     </style>
 </head>
 <body>
 
+    <!-- MAIN CARD -->
     <div class="wallet-card">
         <div class="card-header">
             <div class="card-logo">JASINT</div>
@@ -163,43 +263,84 @@
                 src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://jasint-website.vercel.app&format=png&color=0-0-0&bgcolor=255-255-255" 
                 alt="QR Code — Scan to view JASINT website"
             >
-            <div class="qr-label">SCAN TO VIEW LIVE SITE</div>
+            <div class="qr-label">SCAN TO VIEW REDESIGNED SITE</div>
             <a href="https://jasint-website.vercel.app" class="qr-url" target="_blank">jasint-website.vercel.app</a>
-        </div>
-
-        <div class="info-grid">
-            <div class="info-item">
-                <div class="info-label">Website Value</div>
-                <div class="info-value">$500</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Monthly Maint.</div>
-                <div class="info-value">$40<span style="font-size:12px; color:rgba(255,255,255,0.4)">/mo</span></div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Built By</div>
-                <div class="info-value small">AutoMinds</div>
-            </div>
-            <div class="info-item">
-                <div class="info-label">Status</div>
-                <div class="info-value small">✅ Live</div>
-            </div>
         </div>
 
         <div class="divider"></div>
 
         <div class="powered-by">
-            <span>Built by <a href="mailto:admin@autominds.org">AutoMinds LLC</a></span>
-            <div style="margin-top:8px;">
-                <a href="mailto:admin@autominds.org" style="font-size:12px; color:#00c8ff; text-decoration:none; letter-spacing:0.5px;">admin@autominds.org</a>
+            <div class="brand">Built by <a href="mailto:admin@autominds.org">AutoMinds LLC</a></div>
+            <div class="email"><a href="mailto:admin@autominds.org">admin@autominds.org</a></div>
+        </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+        <a href="https://jasint-website.vercel.app" class="btn btn-primary" target="_blank">
+            JASINT Redesign Site →
+        </a>
+        <button class="btn btn-secondary" id="pricingToggle">
+            Interested? View Pricing
+        </button>
+    </div>
+
+    <!-- PRICING (hidden until tapped) -->
+    <div class="pricing-panel" id="pricingPanel">
+        <div class="pricing-inner">
+            <div class="pricing-title">Investment</div>
+
+            <div class="price-row">
+                <div class="price-box">
+                    <div class="amount">$500</div>
+                    <div class="label">Website</div>
+                </div>
+                <div class="price-box">
+                    <div class="amount">$50</div>
+                    <div class="label">Per Month</div>
+                </div>
+            </div>
+
+            <div class="scope-section">
+                <div class="scope-title">Monthly Maintenance Includes</div>
+                <ul class="scope-list">
+                    <li>Website hosting & uptime monitoring</li>
+                    <li>Security updates & patches</li>
+                    <li>Content updates & minor edits</li>
+                    <li>Performance optimization</li>
+                    <li>Monthly backup & recovery</li>
+                    <li>Mobile & browser compatibility</li>
+                </ul>
+            </div>
+
+            <div class="scope-section">
+                <div class="scope-title">Additional Services Available</div>
+                <ul class="scope-list">
+                    <li>Custom automation & workflow tools</li>
+                    <li>CRM & business development systems</li>
+                    <li>AI-powered dashboards & analytics</li>
+                    <li>SEO, marketing & digital strategy</li>
+                </ul>
+            </div>
+
+            <div class="scope-note">
+                Additional services are priced based on scope.<br>
+                We'll schedule a consultation to discuss your needs.
             </div>
         </div>
     </div>
 
-    <a href="https://jasint-website.vercel.app" class="cta-btn" target="_blank">
-        JASINT Redesign Site →
-    </a>
     <div class="tap-hint">Tap to view the redesigned JASINT website</div>
+
+    <script>
+        document.getElementById('pricingToggle').addEventListener('click', function() {
+            var panel = document.getElementById('pricingPanel');
+            panel.classList.toggle('open');
+            this.textContent = panel.classList.contains('open') 
+                ? 'Hide Pricing' 
+                : 'Interested? View Pricing';
+        });
+    </script>
 
 </body>
 </html>
