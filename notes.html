@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitch Notes — Private</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            padding: 24px 16px;
+        }
+
+        .header {
+            text-align: center;
+            max-width: 400px;
+            margin: 0 auto 24px;
+        }
+        .header h1 {
+            font-size: 18px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        .header p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .pitch-section {
+            max-width: 400px;
+            margin: 0 auto 40px;
+        }
+
+        .pitch-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .pitch-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #00c8ff;
+            margin-bottom: 12px;
+        }
+        .pitch-card p, .pitch-card li {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .pitch-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .pitch-card li::before {
+            content: '→ ';
+            color: #00c8ff;
+        }
+        .pitch-card li {
+            margin-bottom: 6px;
+        }
+
+        .price-highlight {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        .price-box {
+            text-align: center;
+            background: rgba(0, 200, 255, 0.05);
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px 20px;
+            flex: 1;
+        }
+        .price-box .amount {
+            font-size: 28px;
+            font-weight: 800;
+            color: #00c8ff;
+        }
+        .price-box .label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        .links {
+            max-width: 400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .link-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+        }
+        .link-primary {
+            background: linear-gradient(135deg, #00c8ff, #0066ff);
+            color: #fff;
+        }
+        .link-secondary {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #00c8ff;
+        }
+        .hint {
+            text-align: center;
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.2);
+            margin-top: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Quick Pitch Notes</h1>
+        <p>For your eyes only — reference before the meeting</p>
+    </div>
+
+    <div class="pitch-section">
+        <div class="pitch-card">
+            <h3>The Opening</h3>
+            <p>"We noticed JASINT's current website wasn't fully representing the level of work you do — the DoD contracts, the IC partnerships, the security clearances. So we went ahead and built a complete redesign to show what's possible."</p>
+        </div>
+
+        <div class="pitch-card">
+            <h3>What We Fixed</h3>
+            <ul>
+                <li>Replaced the generic WordPress template with a custom, professional design</li>
+                <li>Fixed typos and grammar issues ("BETER," "TEHNOLOGIES," "Soutions")</li>
+                <li>Added leadership showcase for Rodney Williams &amp; his TEDCO appointment</li>
+                <li>Built proper service breakdowns — Systems Engineering, Cybersecurity, Ops Mgmt</li>
+                <li>Added interactive stats, animations, and a modern contact form</li>
+                <li>Mobile-responsive — works perfectly on phones and tablets</li>
+                <li>Added automation &amp; digital transformation section</li>
+                <li>Proper NAICS codes, contract vehicles, and certifications displayed</li>
+            </ul>
+        </div>
+
+        <div class="pitch-card">
+            <h3>The Offer</h3>
+            <div class="price-highlight">
+                <div class="price-box">
+                    <div class="amount">$500</div>
+                    <div class="label">One-Time</div>
+                </div>
+                <div class="price-box">
+                    <div class="amount">$40</div>
+                    <div class="label">Per Month</div>
+                </div>
+            </div>
+            <p>$500 gets them the full redesigned website, deployed and ready to go. $40/month covers hosting, maintenance, updates, and security monitoring. If they want further work — automation, CRM, custom tools — we can discuss additional services through AutoMinds.</p>
+        </div>
+
+        <div class="pitch-card">
+            <h3>The Close</h3>
+            <p>"Just scan this QR code and you can see the whole thing live right now. Everything is already built and ready to go — all we need is the green light to swap it in. And if you need anything beyond the website — automation, AI tools, custom dashboards — that's what AutoMinds specializes in."</p>
+        </div>
+    </div>
+
+    <div class="links">
+        <a href="https://jasint-website.vercel.app/card.html" class="link-btn link-secondary">
+            Open Client Card (send this to them)
+        </a>
+        <a href="https://jasint-website.vercel.app" class="link-btn link-primary">
+            AutoMinds Live Site →
+        </a>
+    </div>
+    <div class="hint">These notes are private — only share the Client Card link</div>
+
+</body>
+</html>

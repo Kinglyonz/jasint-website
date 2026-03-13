@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JASINT Website Redesign — AutoMinds</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 24px 16px;
+        }
+
+        .wallet-card {
+            max-width: 400px;
+            width: 100%;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #0a1628 100%);
+            border-radius: 20px;
+            padding: 32px 24px;
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.1), 0 0 40px rgba(0, 200, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .wallet-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00c8ff, #0088ff, #00c8ff);
+        }
+        .card-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .card-logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #00c8ff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-subtitle {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        .qr-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qr-section img {
+            width: 200px;
+            height: 200px;
+        }
+        .qr-label {
+            font-size: 11px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .qr-url {
+            font-size: 12px;
+            color: #0088ff;
+            margin-top: 4px;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .info-item { text-align: center; }
+        .info-label {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .info-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00c8ff;
+        }
+        .info-value.small { font-size: 14px; }
+
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 24px 0;
+        }
+
+        .powered-by {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .powered-by span {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+        }
+        .powered-by a {
+            color: #00c8ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-btn {
+            display: block;
+            max-width: 400px;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #00c8ff, #0066ff);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+        .tap-hint {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="wallet-card">
+        <div class="card-header">
+            <div class="card-logo">JASINT</div>
+            <div class="card-subtitle">Consulting & Technologies — Website Redesign</div>
+        </div>
+
+        <div class="qr-section">
+            <img 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://jasint-website.vercel.app&format=png&color=0-0-0&bgcolor=255-255-255" 
+                alt="QR Code — Scan to view JASINT website"
+            >
+            <div class="qr-label">SCAN TO VIEW LIVE SITE</div>
+            <a href="https://jasint-website.vercel.app" class="qr-url" target="_blank">jasint-website.vercel.app</a>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Website Value</div>
+                <div class="info-value">$500</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Monthly Maint.</div>
+                <div class="info-value">$40<span style="font-size:12px; color:rgba(255,255,255,0.4)">/mo</span></div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Built By</div>
+                <div class="info-value small">AutoMinds</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Status</div>
+                <div class="info-value small">✅ Live</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="powered-by">
+            <span>Built by <a href="mailto:admin@autominds.org">AutoMinds LLC</a></span>
+            <div style="margin-top:8px;">
+                <a href="mailto:admin@autominds.org" style="font-size:12px; color:#00c8ff; text-decoration:none; letter-spacing:0.5px;">admin@autominds.org</a>
+            </div>
+        </div>
+    </div>
+
+    <a href="https://jasint-website.vercel.app" class="cta-btn" target="_blank">
+        AutoMinds Live Site →
+    </a>
+    <div class="tap-hint">Tap to view the redesigned JASINT website</div>
+
+</body>
+</html>
