@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Me — JASINT Redesign</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 16px;
+        }
+
+        .scan-card {
+            max-width: 340px;
+            width: 100%;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #0a1628 100%);
+            border-radius: 24px;
+            padding: 36px 28px;
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.12), 0 0 40px rgba(0, 200, 255, 0.06);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .scan-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00c8ff, #0088ff, #00c8ff);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #00c8ff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+        }
+        .tagline {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.35);
+            text-transform: uppercase;
+            margin-bottom: 28px;
+        }
+
+        .qr-wrap {
+            background: #fff;
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 28px;
+        }
+        .qr-wrap img {
+            width: 220px;
+            height: 220px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .scan-label {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #00c8ff;
+            margin-bottom: 8px;
+        }
+        .scan-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.35);
+            line-height: 1.5;
+        }
+
+        .branding {
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .branding-name {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.2);
+            text-transform: uppercase;
+        }
+        .branding-name a {
+            color: #00c8ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .branding-email {
+            margin-top: 6px;
+        }
+        .branding-email a {
+            font-size: 11px;
+            color: rgba(0, 200, 255, 0.6);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="scan-card">
+        <div class="logo">JASINT</div>
+        <div class="tagline">Website Redesign Proposal</div>
+
+        <div class="qr-wrap">
+            <img 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https://jasint-website.vercel.app/card.html&format=png&color=0-0-0&bgcolor=255-255-255" 
+                alt="Scan to view proposal"
+            >
+        </div>
+
+        <div class="scan-label">Scan to View</div>
+        <div class="scan-desc">See your redesigned website, pricing, and details</div>
+
+        <div class="branding">
+            <div class="branding-name">Built by <a href="mailto:admin@autominds.org">AutoMinds LLC</a></div>
+            <div class="branding-email"><a href="mailto:admin@autominds.org">admin@autominds.org</a></div>
+        </div>
+    </div>
+
+</body>
+</html>
