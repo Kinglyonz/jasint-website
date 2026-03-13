@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JASINT Website Redesign — Presentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+            background: #000;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== WALLET-STYLE CARD ===== */
+        .wallet-card {
+            max-width: 400px;
+            margin: 40px auto 20px;
+            background: linear-gradient(135deg, #0a1628 0%, #0d2137 40%, #0a1628 100%);
+            border-radius: 20px;
+            padding: 32px 24px;
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            box-shadow: 0 20px 60px rgba(0, 150, 255, 0.1), 0 0 40px rgba(0, 200, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        .wallet-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00c8ff, #0088ff, #00c8ff);
+        }
+        .card-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+        .card-logo {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(135deg, #00c8ff, #0088ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-subtitle {
+            font-size: 10px;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            margin-top: 4px;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qr-section img {
+            width: 200px;
+            height: 200px;
+        }
+        .qr-label {
+            font-size: 11px;
+            color: #333;
+            margin-top: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .qr-url {
+            font-size: 12px;
+            color: #0088ff;
+            margin-top: 4px;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .info-item {
+            text-align: center;
+        }
+        .info-label {
+            font-size: 9px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.3);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+        .info-value {
+            font-size: 18px;
+            font-weight: 700;
+            color: #00c8ff;
+        }
+        .info-value.small {
+            font-size: 14px;
+        }
+
+        /* Divider */
+        .divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+            margin: 24px 0;
+        }
+
+        /* Bottom badge */
+        .powered-by {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .powered-by span {
+            font-size: 10px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.25);
+            text-transform: uppercase;
+        }
+        .powered-by a {
+            color: #00c8ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ===== PITCH SECTION ===== */
+        .pitch-section {
+            max-width: 400px;
+            margin: 0 auto 40px;
+            padding: 0 24px;
+        }
+        .pitch-title {
+            font-size: 18px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.6);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .pitch-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 16px;
+        }
+        .pitch-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #00c8ff;
+            margin-bottom: 12px;
+        }
+        .pitch-card p, .pitch-card li {
+            font-size: 14px;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        .pitch-card ul {
+            list-style: none;
+            padding: 0;
+        }
+        .pitch-card li::before {
+            content: '→ ';
+            color: #00c8ff;
+        }
+        .pitch-card li {
+            margin-bottom: 6px;
+        }
+
+        .price-highlight {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 24px 0;
+        }
+        .price-box {
+            text-align: center;
+            background: rgba(0, 200, 255, 0.05);
+            border: 1px solid rgba(0, 200, 255, 0.15);
+            border-radius: 12px;
+            padding: 16px 20px;
+            flex: 1;
+        }
+        .price-box .amount {
+            font-size: 28px;
+            font-weight: 800;
+            color: #00c8ff;
+        }
+        .price-box .label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* CTA Button */
+        .cta-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #00c8ff, #0066ff);
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            margin-top: 16px;
+            cursor: pointer;
+        }
+
+        /* Tap to open */
+        .tap-hint {
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- WALLET CARD -->
+    <div class="wallet-card">
+        <div class="card-header">
+            <div class="card-logo">JASINT</div>
+            <div class="card-subtitle">Consulting & Technologies — Website Redesign</div>
+        </div>
+
+        <div class="qr-section">
+            <!-- QR Code via Google Charts API -->
+            <img 
+                src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://jasint-website.vercel.app&format=png&color=0-0-0&bgcolor=255-255-255" 
+                alt="QR Code — Scan to view JASINT website"
+            >
+            <div class="qr-label">SCAN TO VIEW LIVE SITE</div>
+            <a href="https://jasint-website.vercel.app" class="qr-url" target="_blank">jasint-website.vercel.app</a>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">Website Value</div>
+                <div class="info-value">$500</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Monthly Maint.</div>
+                <div class="info-value">$40<span style="font-size:12px; color:rgba(255,255,255,0.4)">/mo</span></div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Built By</div>
+                <div class="info-value small">AutoMinds</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Status</div>
+                <div class="info-value small">✅ Live</div>
+            </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="powered-by">
+            <span>Built by <a href="#">AutoMinds LLC</a></span>
+        </div>
+    </div>
+
+    <!-- SALES PITCH REFERENCE -->
+    <div class="pitch-section">
+        <div class="pitch-title">Quick Pitch Notes</div>
+
+        <div class="pitch-card">
+            <h3>The Opening</h3>
+            <p>"We noticed JASINT's current website wasn't fully representing the level of work you do — the DoD contracts, the IC partnerships, the security clearances. So we went ahead and built a complete redesign to show what's possible."</p>
+        </div>
+
+        <div class="pitch-card">
+            <h3>What We Fixed</h3>
+            <ul>
+                <li>Replaced the generic WordPress template with a custom, professional design</li>
+                <li>Fixed typos and grammar issues ("BETER," "TEHNOLOGIES," "Soutions")</li>
+                <li>Added leadership showcase for Rodney Williams & his TEDCO appointment</li>
+                <li>Built proper service breakdowns — Systems Engineering, Cybersecurity, Ops Mgmt</li>
+                <li>Added interactive stats, animations, and a modern contact form</li>
+                <li>Mobile-responsive — works perfectly on phones and tablets</li>
+                <li>Added automation & digital transformation section</li>
+                <li>Proper NAICS codes, contract vehicles, and certifications displayed</li>
+            </ul>
+        </div>
+
+        <div class="pitch-card">
+            <h3>The Offer</h3>
+            <div class="price-highlight">
+                <div class="price-box">
+                    <div class="amount">$500</div>
+                    <div class="label">One-Time</div>
+                </div>
+                <div class="price-box">
+                    <div class="amount">$40</div>
+                    <div class="label">Per Month</div>
+                </div>
+            </div>
+            <p>$500 gets them the full redesigned website, deployed and ready to go. $40/month covers hosting, maintenance, updates, and security monitoring. If they want further work — automation, CRM, custom tools — we can discuss additional services through AutoMinds.</p>
+        </div>
+
+        <div class="pitch-card">
+            <h3>The Close</h3>
+            <p>"Just scan this QR code and you can see the whole thing live right now. Everything is already built and ready to go — all we need is the green light to swap it in. And if you need anything beyond the website — automation, AI tools, custom dashboards — that's what AutoMinds specializes in."</p>
+        </div>
+
+        <a href="https://jasint-website.vercel.app" class="cta-btn" target="_blank">
+            Open Live Site →
+        </a>
+        <div class="tap-hint">Tap to open the live website</div>
+    </div>
+
+</body>
+</html>
