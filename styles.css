@@ -148,7 +148,7 @@ ul {
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 0.4rem;
 }
 
 .logo-img {
@@ -160,7 +160,6 @@ ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: -0.4rem;
 }
 
 .logo-text {
