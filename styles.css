@@ -1135,19 +1135,43 @@ ul {
     padding: 5rem 0;
 }
 
-.partners-logos {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
-    opacity: 0.7;
-    filter: brightness(1.2);
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-top: 2rem;
 }
 
-.partner-logo-img {
-    max-height: 60px;
-    object-fit: contain;
+.partner-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    transition: border-color 0.3s ease;
+}
+
+.partner-item:hover {
+    border-color: var(--accent);
+}
+
+.partner-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: 0.02em;
+}
+
+.partner-desc {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
 }
 
 /* ============================================
@@ -1438,6 +1462,114 @@ ul {
         flex-direction: column;
         gap: 1.5rem;
     }
+}
+
+/* ============================================
+   EMPLOYEE RESOURCES
+   ============================================ */
+.employee-resources {
+    padding: 5rem 0;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.resource-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.resource-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 150, 255, 0.08);
+}
+
+.resource-icon {
+    color: var(--accent);
+}
+
+.resource-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.resource-card p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* ============================================
+   NEWS
+   ============================================ */
+.news-section {
+    padding: 5rem 0;
+    background: var(--surface);
+}
+
+.news-grid {
+    margin-top: 2rem;
+}
+
+.news-card {
+    display: block;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    max-width: 600px;
+}
+
+.news-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+
+.news-date {
+    font-size: 0.8rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+}
+
+.news-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.news-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.news-link {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: 0.02em;
 }
 
 /* ============================================
@@ -1776,6 +1908,14 @@ ul {
         grid-template-columns: 1fr;
     }
 
+    .resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .stats-grid {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -1791,7 +1931,7 @@ ul {
     /* Reduce section padding on tablets */
     .about, .services, .why-jasint, .leadership,
     .sectors, .contracts, .locations, .careers,
-    .automation, .contact {
+    .employee-resources, .news-section, .contact {
         padding: 5rem 0;
     }
 }
@@ -2022,7 +2162,7 @@ ul {
     /* Reduce section padding on mobile */
     .about, .services, .why-jasint, .leadership,
     .sectors, .contracts, .locations, .careers,
-    .automation, .contact {
+    .employee-resources, .news-section, .contact {
         padding: 4rem 0;
     }
 
@@ -2180,8 +2320,12 @@ ul {
     /* Reduce section padding further on small phones */
     .about, .services, .why-jasint, .leadership,
     .sectors, .contracts, .locations, .careers,
-    .automation, .contact {
+    .employee-resources, .news-section, .contact {
         padding: 3rem 0;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
     .section-header {
