@@ -1,28 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 60" width="50" height="60">
-  <defs>
-    <linearGradient id="purpleLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#7c6cf0"/>
-      <stop offset="100%" stop-color="#6a5ce7"/>
-    </linearGradient>
-    <linearGradient id="purpleDark" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#6350d8"/>
-      <stop offset="100%" stop-color="#5543cc"/>
-    </linearGradient>
-    <linearGradient id="cyanLight" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#38e8ff"/>
-      <stop offset="100%" stop-color="#22d3ee"/>
-    </linearGradient>
-    <linearGradient id="cyanDark" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#22d3ee"/>
-      <stop offset="100%" stop-color="#0eb8d4"/>
-    </linearGradient>
-  </defs>
-  <!-- Left top face -->
-  <polygon points="25,3 25,30 5,18" fill="url(#purpleLight)"/>
-  <!-- Left bottom face -->
-  <polygon points="5,18 25,30 25,57 5,45" fill="url(#purpleDark)"/>
-  <!-- Right top face -->
-  <polygon points="25,3 45,18 25,30" fill="url(#cyanLight)"/>
-  <!-- Right bottom face -->
-  <polygon points="25,30 45,18 45,45 25,57" fill="url(#cyanDark)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60" width="120" height="120">
+  <!-- Interlocking hexagon brackets -->
+  <!-- Purple left bracket: Top → TopLeft → BottomLeft (behind cyan at top) -->
+  <polyline points="30,6 9.2,18 9.2,42"
+    fill="none" stroke="#6C5CE7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Cyan right bracket: Top → TopRight → BottomRight → Bottom (over purple at top) -->
+  <polyline points="30,6 50.8,18 50.8,42 30,54"
+    fill="none" stroke="#00D4FF" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Purple lower segment: BottomLeft → Bottom (over cyan at bottom) -->
+  <polyline points="9.2,42 30,54"
+    fill="none" stroke="#6C5CE7" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
