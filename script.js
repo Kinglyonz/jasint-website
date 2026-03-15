@@ -1,5 +1,5 @@
 /* ============================================
-   JASINT Consulting & Technologies — Script
+   JASINT Innovative Solutions — Script
    Professional Animations & Interactivity
    ============================================ */
 
