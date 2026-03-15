@@ -2034,15 +2034,41 @@ ul {
 
     .hero-certifications {
         margin-bottom: 0;
+        margin-top: 2rem;
     }
 
     .cert-badges {
-        gap: 0.4rem;
+        gap: 0.5rem;
     }
 
     .cert-badge {
-        font-size: 0.68rem;
-        padding: 0.25rem 0.6rem;
+        font-size: 0.72rem;
+        padding: 0.45rem 0.8rem;
+        min-width: 75px;
+    }
+
+    .cert-label {
+        font-size: 0.78rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .partner-logo {
+        width: 52px;
+        height: 52px;
+    }
+
+    .partner-item {
+        min-height: 120px;
+        padding: 1.25rem 1rem;
+    }
+
+    .resources-grid {
+        grid-template-columns: 1fr;
     }
 
     /* Stats — fix orphaned 5th item */
@@ -2231,12 +2257,41 @@ ul {
     }
 
     .cert-badges {
-        gap: 0.3rem;
+        gap: 0.4rem;
+        justify-content: center;
     }
 
     .cert-badge {
-        font-size: 0.6rem;
-        padding: 0.2rem 0.45rem;
+        font-size: 0.65rem;
+        padding: 0.35rem 0.6rem;
+        min-width: 65px;
+    }
+
+    .cert-label {
+        font-size: 0.72rem;
+    }
+
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    .partner-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .partner-logo-wide {
+        height: 36px;
+    }
+
+    .partner-name {
+        font-size: 0.75rem;
+    }
+
+    .partner-item {
+        min-height: 100px;
+        padding: 1rem 0.75rem;
     }
 
     .btn {
